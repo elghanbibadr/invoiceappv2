@@ -1,8 +1,7 @@
-import React from 'react'
-import Invoice from './componenet/ui/Invoice'
+import Navbar from "./componenet/Navbar/Navbar"
 const App = () => {
   return (
-    <Invoice />
+    <Navbar />
   )
 }
 
