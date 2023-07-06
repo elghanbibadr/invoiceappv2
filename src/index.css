@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
+
+/* Tailwind CSS classes */
+@layer components {
+  thead td {
+    @apply text-white;
+  }
+
+  tbody td {
+    @apply text-white font-bold;
+  }
+}
+
+
 body {
   background: #141625;
   font-size: 0.8rem;

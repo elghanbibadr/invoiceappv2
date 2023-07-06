@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from '../../ui/Card'
-
+import InvoiceSummaryTable from './InvoiceSummaryTable'
 const InvoiceDetailsPage = () => {
     return (
         <Card className="mt-10">
@@ -23,6 +23,7 @@ const InvoiceDetailsPage = () => {
                     <h3>mosh hemdanai</h3>
                 </div>
             </div>
+            <InvoiceSummaryTable />
         </Card>
     )
 }
