@@ -12,6 +12,7 @@ export default {
         accentColor: '#7e88c3',
         paleRed: '#ec5757',
         darkBlue: '#252945'
+
       }
     },
   },
