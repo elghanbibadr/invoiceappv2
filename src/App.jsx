@@ -1,10 +1,8 @@
 import React from 'react'
-import InvoiceStatus from './componenet/InvoiceStatus'
+import Invoice from './componenet/ui/Invoice'
 const App = () => {
   return (
-    <div>
-      <InvoiceStatus />
-    </div>
+    <Invoice />
   )
 }
 
