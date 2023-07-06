@@ -10,6 +10,8 @@ export default {
         primaryColor: '#dfe3fa0f',
         secondaryColor: '#141625',
         accentColor: '#7e88c3',
+        paleRed: '#ec5757',
+        darkBlue: '#252945'
       }
     },
   },
