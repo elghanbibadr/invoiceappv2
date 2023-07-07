@@ -10,16 +10,17 @@ const dropDownItems = [
 ]
 const DropDown = () => {
     const [activeBox, SetActiveBox] = useState(null)
-    const handleClick = (boxId) => {
+
+    const handleOptionSelected = (boxId) => {
         SetActiveBox(boxId)
-        console.log(boxId)
     }
+
     return (
         <>
             <h4>Filter by status</h4>
             <Card className="w-fit pr-14">
                 {dropDownItems.map(({ id, text }) => {
-                    return <div onClick={() => handleClick(id)} key={id} className='flex items-center mb-4'>
+                    return <div onClick={() => handleOptionSelected(id)} key={id} className='flex items-center mb-4'>
                         <span className={`h-4 w-4  rounded-sm inline-flex justify-center items-center ${activeBox === id ? ' bg-accentColor' : 'bg-secondaryColor'} `}>
                             {activeBox === id && <img src={checkIcon} />}
                         </span>
