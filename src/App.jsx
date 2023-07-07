@@ -1,10 +1,13 @@
 import Navbar from "./componenet/Navbar/Navbar"
+import Container from "./componenet/ui/Container"
 import InvoiceDetailsPage from "./componenet/pages/invoiceDetailsPage/InvoiceDetailsPage"
 const App = () => {
   return (
     <>
       <Navbar />
-      <InvoiceDetailsPage />
+      <Container>
+        <InvoiceDetailsPage />
+      </Container>
     </>
 
   )
