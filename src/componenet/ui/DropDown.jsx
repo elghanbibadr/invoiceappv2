@@ -9,15 +9,14 @@ const dropDownItems = [
     { id: "3", text: "Paid" }
 
 ]
+
 const DropDown = () => {
     const [activeBox, SetActiveBox] = useState(null)
     const [dropDownCollapsed, setDropDownCollapsed] = useState(false)
 
-    const handleOptionSelected = (boxId) => {
-        SetActiveBox(boxId)
-    }
-
+    const handleOptionSelected = (boxId) => SetActiveBox(boxId)
     const handleDropDownCollapsed = () => setDropDownCollapsed(prv => !prv)
+
 
     return (
         <>
