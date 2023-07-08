@@ -1,13 +1,17 @@
 import Navbar from "./componenet/Navbar/Navbar"
 import Container from "./componenet/ui/Container"
-import FilterInvoicesBar from "./componenet/pages/Home/FilterInvoicesBar/FilterInvoicesBar"
-import DropDown from "./componenet/ui/DropDown"
+import { Route, Routes } from "react-router-dom"
+import Login from "./componenet/pages/Login/Login"
+
 const App = () => {
   return (
     <>
       <Navbar />
       <Container>
-        <FilterInvoicesBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </Container>
     </>
 
