@@ -9,7 +9,7 @@ export default {
       colors: {
         primaryColor: '#dfe3fa0f',
         secondaryColor: '#141625',
-        accentColor: '#7e88c3',
+        accentColor: '#7c5dfa',
         paleRed: '#ec5757',
         darkBlue: '#252945'
 
