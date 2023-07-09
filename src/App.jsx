@@ -4,7 +4,9 @@ import Home from "./componenet/pages/Home/Home"
 import { Route, Routes } from "react-router-dom"
 import Login from "./componenet/pages/Login/Login"
 
+
 const App = () => {
+
   return (
     <>
       <Navbar />
