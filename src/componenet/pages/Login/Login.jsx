@@ -1,11 +1,12 @@
 import { signInAnonymously, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
-import { auth } from './firebase.js';
+import { auth } from '../../../../public/firebase/FirebaseConfig';
 
 const Login = () => {
     const handleViewAsDemo = async () => {
         try {
             // Sign in anonymously
             await signInAnonymously(auth);
+            console.log(auth.currentUser)
             // Fetch invoices for demo user
             // Add your logic to fetch invoices from Firestore
         } catch (error) {
