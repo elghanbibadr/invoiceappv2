@@ -3,8 +3,11 @@ import { auth } from '../../../../public/firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../../../public/firebase/FirebaseConfig';
+import { useContext } from 'react';
+import { AppContext } from '../../../store/AppContext';
 
 const Login = () => {
+    const { setInvoices } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -23,6 +26,9 @@ const Login = () => {
                     data: doc.data()
                 });
             });
+
+
+            setInvoices(fetchedItems)
 
             // navigate user to home page
             navigate('/home');
