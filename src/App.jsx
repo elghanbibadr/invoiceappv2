@@ -1,7 +1,7 @@
 import Navbar from "./componenet/Navbar/Navbar"
 import Container from "./componenet/ui/Container"
 import Home from "./componenet/pages/Home/Home"
-import ProtectedRoute from "./componenet/pages/Login/ProtectedRoutes"
+// import ProtectedRoute from "./componenet/pages/Login/ProtectedRoutes"
 import { Routes, Route } from 'react-router-dom';
 import Login from "./componenet/pages/Login/Login"
 
@@ -14,8 +14,7 @@ const App = () => {
       <Container>
         <Routes>
           <Route path="/" element={< Login />} />
-          {/* <Route path="/home" element={<Login />} /> */}
-          {/* <ProtectedRoute path="/home" element={<Invoices />} /> */}
+          <Route path="/home" element={<Home />} />
         </Routes>
       </Container>
     </>

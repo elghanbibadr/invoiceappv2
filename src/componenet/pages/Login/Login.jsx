@@ -1,13 +1,24 @@
 import { signInAnonymously, signInWithPopup, GithubAuthProvider } from 'firebase/auth';
 import { auth } from '../../../../public/firebase/FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
     const handleViewAsDemo = async () => {
         try {
             // Sign in anonymously
             await signInAnonymously(auth);
             console.log(auth.currentUser)
+            // navigate user to home page
+            // if (auth.currentUser) {
+            //     navigate('/home');
+
+            // }
             // Fetch invoices for demo user
+
             // Add your logic to fetch invoices from Firestore
         } catch (error) {
             console.error('Error signing in:', error);
