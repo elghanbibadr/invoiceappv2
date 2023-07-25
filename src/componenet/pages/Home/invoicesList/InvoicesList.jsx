@@ -7,7 +7,6 @@ import { AppContext } from "../../../../store/AppContext"
 const InvoicesList = () => {
   const { invoices } = useContext(AppContext)
 
-  console.log(invoices)
   return (
     <div>
       {invoices.map(({ id, data }) => (

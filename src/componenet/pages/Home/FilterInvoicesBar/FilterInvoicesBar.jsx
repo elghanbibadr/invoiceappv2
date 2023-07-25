@@ -5,7 +5,7 @@ import CurrrentInvoicesCount from './CurrrentInvoicesCount'
 
 const FilterInvoicesBar = () => {
     return (
-        <div className='flex justify-between '>
+        <div className='flex justify-between w-[80%] mx-auto'>
             <CurrrentInvoicesCount />
             <div className='flex items-center'>
                 <DropDown />
