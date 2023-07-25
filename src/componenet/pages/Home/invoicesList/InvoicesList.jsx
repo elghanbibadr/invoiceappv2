@@ -1,9 +1,14 @@
-// import React from 'react'
+import React, { useContext, useState } from 'react'
+// import { AppContext } from '../../../../store/AppContext'
+import { AppContext } from "../../../../store/AppContext"
 
-// const InvoicesList = () => {
-//   return (
-//     <div>InvoicesList</div>
-//   )
-// }
+const InvoicesList = () => {
+  const { invoice } = useContext(AppContext)
 
-// export default InvoicesList
+  console.log(invoice)
+  return (
+    <div>InvoicesList</div>
+  )
+}
+
+export default InvoicesList
