@@ -1,13 +1,20 @@
 import React, { useContext, useState } from 'react'
 // import { AppContext } from '../../../../store/AppContext'
+import Card from "../../../ui/Card"
+import Invoice from '../../../ui/Invoice'
 import { AppContext } from "../../../../store/AppContext"
 
 const InvoicesList = () => {
-  const { invoice } = useContext(AppContext)
+  const { invoices } = useContext(AppContext)
 
-  console.log(invoice)
+  console.log(invoices)
   return (
-    <div>InvoicesList</div>
+    <div>
+      {invoices.map(({ id, data }) => (
+
+        <Invoice key={id} data={data} />
+      ))}
+    </div>
   )
 }
 
