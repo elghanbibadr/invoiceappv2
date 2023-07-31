@@ -11,7 +11,8 @@ export default {
         secondaryColor: '#141625',
         accentColor: '#7c5dfa',
         paleRed: '#ec5757',
-        darkBlue: '#252945'
+        darkBlue: '#252945',
+        paleCyan: "#7e88c3"
 
       }
     },
