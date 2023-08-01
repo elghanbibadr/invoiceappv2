@@ -6,7 +6,6 @@ import Button from '../../ui/Button';
 import Card from '../../ui/Card';
 import { db } from '../../../../public/firebase/FirebaseConfig';
 import { useContext, useState } from 'react';
-
 import { AppContext } from '../../../store/AppContext';
 
 const Login = () => {
@@ -29,10 +28,7 @@ const Login = () => {
                     data: doc.data()
                 });
             });
-
-
             setInvoices(fetchedItems)
-
             // navigate user to home page
             navigate('/home');
 
@@ -66,6 +62,9 @@ const Login = () => {
             const provider = new GithubAuthProvider();
             const result = await signInWithPopup(auth, provider);
             setUser(result.user);
+            if (result.user) {
+                navigate('/home');
+            }
         } catch (error) {
             console.error('Error signing in with GitHub:', error);
         }

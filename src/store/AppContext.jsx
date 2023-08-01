@@ -1,10 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { auth } from "../../public/firebase/FirebaseConfig";
-import { query } from 'firebase/firestore';
-import { where } from 'firebase/firestore';
-import { useEffect } from 'react';
-export const AppContext = createContext(null);
+import { where, collection, query, getDocs } from 'firebase/firestore';
+import { db } from "../../public/firebase/FirebaseConfig";
 
+export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
     const [invoices, setInvoices] = useState([])
@@ -18,16 +17,16 @@ export const AppContextProvider = ({ children }) => {
     }
     useEffect(() => {
         if (user) {
+
             // If the user is signed in, fetch invoices from Firestore
             const fetchInvoices = async () => {
                 try {
                     const invoicesRef = collection(db, 'invoices');
                     const q = query(invoicesRef, where('userId', '==', user.uid));
-
                     const querySnapshot = await getDocs(q);
                     const invoicesData = querySnapshot.docs.map((doc) => doc.data());
                     console.log(invoicesData)
-                    setInvoices(invoicesData);
+                    // setInvoices(invoicesData);
                 } catch (error) {
                     console.error('Error fetching invoices:', error);
                 }
