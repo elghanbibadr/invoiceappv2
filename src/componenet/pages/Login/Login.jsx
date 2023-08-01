@@ -18,6 +18,7 @@ const Login = () => {
             // Sign in anonymously
             await signInAnonymously(auth);
             if (!auth.currentUser) return;
+            setUser(auth.currentUser)
             // Fetch invoices for demo user
             // Add your logic to fetch invoices from Firestore
             const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
