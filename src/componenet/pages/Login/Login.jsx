@@ -4,14 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, query } from 'firebase/firestore';
 import { db } from '../../../../public/firebase/FirebaseConfig';
 import { useContext, useState } from 'react';
-import { addDoc } from 'firebase/firestore';
-import { where } from 'firebase/firestore';
-import { useEffect } from 'react';
+
 import { AppContext } from '../../../store/AppContext';
 
 const Login = () => {
-    const { setInvoices } = useContext(AppContext)
-    const [user, setUser] = useState(undefined)
+    const { setInvoices, setUser } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -71,26 +68,7 @@ const Login = () => {
             console.error('Error signing in with GitHub:', error);
         }
     };
-    useEffect(() => {
-        if (user) {
-            // If the user is signed in, fetch invoices from Firestore
-            const fetchInvoices = async () => {
-                try {
-                    const invoicesRef = collection(db, 'invoices');
-                    const q = query(invoicesRef, where('userId', '==', user.uid));
 
-                    const querySnapshot = await getDocs(q);
-                    const invoicesData = querySnapshot.docs.map((doc) => doc.data());
-                    console.log(invoicesData)
-                    setInvoices(invoicesData);
-                } catch (error) {
-                    console.error('Error fetching invoices:', error);
-                }
-            };
-            fetchInvoices();
-            //   console.log(Invoice)
-        }
-    }, [user]);
 
 
 
