@@ -2,6 +2,8 @@ import { signInAnonymously, signInWithPopup, GithubAuthProvider } from 'firebase
 import { auth } from '../../../../public/firebase/FirebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, query } from 'firebase/firestore';
+import Button from '../../ui/Button';
+import Card from '../../ui/Card';
 import { db } from '../../../../public/firebase/FirebaseConfig';
 import { useContext, useState } from 'react';
 
@@ -73,10 +75,14 @@ const Login = () => {
 
 
     return (
-        <div>
-            <button onClick={handleViewAsDemo}>View as Demo</button>
-            <button onClick={handleSignInWithGitHub}>Sign in with GitHub</button>
-        </div>
+        <Card className='w-fit mx-auto text-center'>
+            <h1>Login</h1>
+            <p className='my-4'>This is a portfolio project developed from a Front End Mentor challenge</p>
+            <div>
+                <Button className="bg-primaryColor" onClick={handleViewAsDemo}>View as Demo</Button>
+                <Button className="bg-accentColor mx-2" onClick={handleSignInWithGitHub}>Sign in with GitHub</Button>
+            </div>
+        </Card>
     );
 };
 
