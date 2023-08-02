@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../../public/firebase/FirebaseConfig";
 import { where, collection, query, getDocs } from 'firebase/firestore';
+import { onAuthStateChanged } from "firebase/auth";
 import { db } from "../../public/firebase/FirebaseConfig";
 
 export const AppContext = createContext(null);
@@ -15,6 +16,23 @@ export const AppContextProvider = ({ children }) => {
         user,
         setUser
     }
+    useEffect(() => {
+        // Subscribe to the Firebase Auth state changes
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in
+                setUser(user);
+            } else {
+                // User is signed out
+                setUser(null);
+            }
+        });
+
+        // Clean up the subscription on unmount
+        return () => unsubscribe();
+    }, []);
+
+
     useEffect(() => {
         if (user) {
 
