@@ -7,14 +7,13 @@ import { AppContext } from '../../../store/AppContext'
 const InvoiceDetailsPage = () => {
   const { invoices } = useContext(AppContext)
   const { id } = useParams();
-  console.log(invoices)
   const { data: currentShownInvoiceDetail } = invoices.find(invoice => invoice.data.id === id)
   console.log(currentShownInvoiceDetail)
-  console.log(id)
+
   return (
     <div>
       <EditOrDeleteInvoiceBox />
-      <InvoiceDetailsBox />
+      <InvoiceDetailsBox clientName={currentShownInvoiceDetail.clientName} paymentDue={currentShownInvoiceDetail.paymentDue} createdAt={currentShownInvoiceDetail.createdAt} />
     </div>
   )
 }
