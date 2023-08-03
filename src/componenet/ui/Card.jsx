@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Card = ({ children, className }) => {
+const Card = ({ children, className, onClick }) => {
     return (
-        <div className={`${className} bg-primaryColor p-6 rounded-md cursor-pointer`}>
+        <div onClick={onClick} className={`${className} bg-primaryColor p-6 rounded-md cursor-pointer`}>
             {children}
         </div>
     )
