@@ -20,7 +20,6 @@ const Login = () => {
             if (!auth.currentUser) return;
             setUser(auth.currentUser)
             // Fetch invoices for demo user
-            // Add your logic to fetch invoices from Firestore
             const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
             const fetchedItems = [];
             querySnapshot.forEach((doc) => {

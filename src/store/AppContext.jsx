@@ -34,8 +34,9 @@ export const AppContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        if (user) {
-
+        if (user && !user.isAnonymous) {
+            console.log(invoices)
+            console.log('running')
             // If the user is signed in, fetch invoices from Firestore
             const fetchInvoices = async () => {
                 try {
@@ -43,8 +44,7 @@ export const AppContextProvider = ({ children }) => {
                     const q = query(invoicesRef, where('userId', '==', user.uid));
                     const querySnapshot = await getDocs(q);
                     const invoicesData = querySnapshot.docs.map((doc) => doc.data());
-                    console.log(invoicesData)
-                    // setInvoices(invoicesData);
+                    setInvoices(invoicesData);
                 } catch (error) {
                     console.error('Error fetching invoices:', error);
                 }
@@ -53,6 +53,35 @@ export const AppContextProvider = ({ children }) => {
             //   console.log(Invoice)
         }
     }, [user]);
+
+    useEffect(() => {
+        if (user && user.isAnonymous) {
+
+            const fetchDemoInvoices = async () => {
+                try {
+
+                    // if (!auth.currentUser) return;
+                    // setUser(auth.currentUser)
+                    // Fetch invoices for demo user
+                    const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
+                    const fetchedItems = [];
+                    querySnapshot.forEach((doc) => {
+                        fetchedItems.push({
+                            id: doc.id,
+                            data: doc.data()
+                        });
+                    });
+                    setInvoices(fetchedItems)
+                } catch (error) {
+                    console.error('Error signing in:', error);
+                }
+            };
+            fetchDemoInvoices()
+        }
+
+
+    }, [user])
+
     console.log(invoices)
     return <AppContext.Provider value={value}>
         {children}
