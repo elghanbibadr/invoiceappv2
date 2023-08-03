@@ -1,8 +1,8 @@
 import InvoiceStatus from "./InvoiceStatus"
 import Card from "./Card"
 import { Link } from "react-router-dom"
-const Invoice = ({ data: { id, clientName, createdAt, total, status } }) => {
 
+const Invoice = ({ data: { id, clientName, createdAt, total, status } }) => {
     const handleInvoiceClicked = (e) => console.log('clicked')
 
     return (
