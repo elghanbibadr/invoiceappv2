@@ -3,7 +3,7 @@ import Card from '../../ui/Card'
 import InvoiceSummaryTable from './InvoiceSummaryTable'
 import InvoiceTotalBox from './InvoiceTotalBox'
 
-const InvoiceDetailsPage = () => {
+const InvoiceDetailsBox = () => {
     return (
         <Card className="mt-10">
             <div className='grid grid-cols-2'>
@@ -31,4 +31,4 @@ const InvoiceDetailsPage = () => {
     )
 }
 
-export default InvoiceDetailsPage
+export default InvoiceDetailsBox
