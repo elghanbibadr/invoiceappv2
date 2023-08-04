@@ -17,7 +17,7 @@
   }
 
   tr:first-child {
-    @apply relative left-6
+    /* @apply relative left-6 */
   }
 
   tbody td {

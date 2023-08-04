@@ -13,7 +13,7 @@ const InvoiceDetailsPage = () => {
   return (
     <div>
       <EditOrDeleteInvoiceBox />
-      <InvoiceDetailsBox clientName={currentShownInvoiceDetail.clientName} paymentDue={currentShownInvoiceDetail.paymentDue} createdAt={currentShownInvoiceDetail.createdAt} />
+      <InvoiceDetailsBox clientName={currentShownInvoiceDetail.clientName} paymentDue={currentShownInvoiceDetail.paymentDue} createdAt={currentShownInvoiceDetail.createdAt} items={currentShownInvoiceDetail.items} />
     </div>
   )
 }

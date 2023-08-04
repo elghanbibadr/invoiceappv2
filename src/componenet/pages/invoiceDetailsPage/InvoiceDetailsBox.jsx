@@ -3,7 +3,7 @@ import Card from '../../ui/Card'
 import InvoiceSummaryTable from './InvoiceSummaryTable'
 import InvoiceTotalBox from './InvoiceTotalBox'
 
-const InvoiceDetailsBox = ({ clientName, paymentDue, createdAt }) => {
+const InvoiceDetailsBox = ({ clientName, paymentDue, createdAt, items }) => {
 
     return (
         <Card className="mt-10">
@@ -26,8 +26,8 @@ const InvoiceDetailsBox = ({ clientName, paymentDue, createdAt }) => {
                     <h3>mosh hemdanai</h3>
                 </div>
             </div>
-            <InvoiceSummaryTable />
-            <InvoiceTotalBox />
+            <InvoiceSummaryTable items={items} />
+            {/* <InvoiceTotalBox /> */}
         </Card>
     )
 }
