@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 const Invoice = ({ data: { id, clientName, createdAt, total, status } }) => {
     const handleInvoiceClicked = (e) => console.log('clicked')
 
+    console.log(id)
     return (
         <Link to={`/invoice/${id}`}>
             <Card onClick={handleInvoiceClicked} className=' my-5  grid grid-cols-2 grid-rows-[1fr_30px_1fr] md:grid-cols-5 md:items-center md:grid-rows-1 md:h-fit   hover:border border-paleCyan '>

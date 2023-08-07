@@ -9,16 +9,17 @@ import { useContext, useState } from 'react';
 import { AppContext } from '../../../store/AppContext';
 
 const Login = () => {
-    const { setInvoices, setUser } = useContext(AppContext)
+    const [isLoading, setIsLoading] = useState(false)
+    const { setInvoices, user, setUser } = useContext(AppContext)
 
     const navigate = useNavigate();
 
     const handleViewAsDemo = async () => {
+        setIsLoading(true)
         try {
             // Sign in anonymously
             await signInAnonymously(auth);
             if (!auth.currentUser) return;
-            setUser(auth.currentUser)
             // Fetch invoices for demo user
             const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
             const fetchedItems = [];
@@ -28,7 +29,9 @@ const Login = () => {
                     data: doc.data()
                 });
             });
+            setIsLoading(false)
             setInvoices(fetchedItems)
+            setUser(auth.currentUser)
             // navigate user to home page
             navigate('/home');
 
@@ -37,26 +40,7 @@ const Login = () => {
         }
     };
 
-    // const handleSignInWithGitHub = async () => {
-    //     try {
-    //         // Sign in with GitHub
-    //         const provider = new GithubAuthProvider();
-    //         await signInWithPopup(auth, provider);
 
-    //         console.log(auth.currentUser)
-    //         // if (auth.currentUser) {
-    //         //     const collectionRef = collection(db, auth.currentUser.email, {});
-    //         //     await addDoc(collectionRef);
-
-    //         // }
-    //         // create a new user document on firestore
-
-    //         // Fetch invoices for GitHub user
-    //         // Add your logic to fetch invoices from Firestore
-    //     } catch (error) {
-    //         console.error('Error signing in with GitHub:', error);
-    //     }
-    // };
     const handleSignInWithGitHub = async () => {
         try {
             const provider = new GithubAuthProvider();
@@ -74,14 +58,17 @@ const Login = () => {
 
 
     return (
-        <Card className='w-fit mx-auto text-center'>
-            <h1>Login</h1>
-            <p className='my-4'>This is a portfolio project developed from a Front End Mentor challenge</p>
-            <div>
-                <Button className="bg-primaryColor" onClick={handleViewAsDemo}>View as Demo</Button>
-                <Button className="bg-accentColor mx-2" onClick={handleSignInWithGitHub}>Sign in with GitHub</Button>
-            </div>
-        </Card>
+        <>
+            {isLoading && !user && <p className='text-white text-lg font-bold'>loading .....</p>}
+            {!isLoading && !user && <Card className='w-fit mx-auto text-center'>
+                <h1>Login</h1>
+                <p className='my-4'>This is a portfolio project developed from a Front End Mentor challenge</p>
+                <div>
+                    <Button className="bg-primaryColor" onClick={handleViewAsDemo}>View as Demo</Button>
+                    <Button className="bg-accentColor mx-2" onClick={handleSignInWithGitHub}>Sign in with GitHub</Button>
+                </div>
+            </Card>}
+        </>
     );
 };
 

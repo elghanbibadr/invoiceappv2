@@ -1,3 +1,4 @@
+
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../../public/firebase/FirebaseConfig";
 import { where, collection, query, getDocs } from 'firebase/firestore';
@@ -18,7 +19,8 @@ export const AppContextProvider = ({ children }) => {
         user,
         setUser,
         filteredInvoices,
-        setFilteredInvoices
+        setFilteredInvoices,
+
     }
     useEffect(() => {
         // Subscribe to the Firebase Auth state changes
@@ -39,8 +41,7 @@ export const AppContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (user && !user.isAnonymous) {
-            console.log(invoices)
-            console.log('running')
+
             // If the user is signed in, fetch invoices from Firestore
             const fetchInvoices = async () => {
                 try {
@@ -63,10 +64,6 @@ export const AppContextProvider = ({ children }) => {
 
             const fetchDemoInvoices = async () => {
                 try {
-
-                    // if (!auth.currentUser) return;
-                    // setUser(auth.currentUser)
-                    // Fetch invoices for demo user
                     const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
                     const fetchedItems = [];
                     querySnapshot.forEach((doc) => {
@@ -95,3 +92,15 @@ export const AppContextProvider = ({ children }) => {
         {children}
     </AppContext.Provider>;
 }
+
+
+
+
+
+
+
+
+
+
+
+
