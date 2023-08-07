@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { getDocs, collection, query } from 'firebase/firestore';
 import Button from '../../ui/Button';
 import Card from '../../ui/Card';
-import { db } from '../../../../public/firebase/FirebaseConfig';
 import { useContext, useState } from 'react';
 import { AppContext } from '../../../store/AppContext';
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const { setInvoices, user, setUser } = useContext(AppContext)
+    const { user, setUser } = useContext(AppContext)
 
     const navigate = useNavigate();
 
@@ -20,17 +19,7 @@ const Login = () => {
             // Sign in anonymously
             await signInAnonymously(auth);
             if (!auth.currentUser) return;
-            // Fetch invoices for demo user
-            const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
-            const fetchedItems = [];
-            querySnapshot.forEach((doc) => {
-                fetchedItems.push({
-                    id: doc.id,
-                    data: doc.data()
-                });
-            });
             setIsLoading(false)
-            setInvoices(fetchedItems)
             setUser(auth.currentUser)
             // navigate user to home page
             navigate('/home');

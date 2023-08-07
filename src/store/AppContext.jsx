@@ -22,6 +22,7 @@ export const AppContextProvider = ({ children }) => {
         setFilteredInvoices,
 
     }
+
     useEffect(() => {
         // Subscribe to the Firebase Auth state changes
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -40,13 +41,12 @@ export const AppContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        if (user && !user.isAnonymous) {
-
+        if (user) {
             // If the user is signed in, fetch invoices from Firestore
             const fetchInvoices = async () => {
                 try {
                     const invoicesRef = collection(db, 'invoices');
-                    const q = query(invoicesRef, where('userId', '==', user.uid));
+                    const q = query(invoicesRef, where('email', '==', user.email));
                     const querySnapshot = await getDocs(q);
                     const invoicesData = querySnapshot.docs.map((doc) => doc.data());
                     setInvoices(invoicesData);
@@ -55,38 +55,12 @@ export const AppContextProvider = ({ children }) => {
                 }
             };
             fetchInvoices();
-            //   console.log(Invoice)
         }
     }, [user]);
 
-    useEffect(() => {
-        if (user && user.isAnonymous) {
-
-            const fetchDemoInvoices = async () => {
-                try {
-                    const querySnapshot = await getDocs(collection(db, 'demoinvoices'));
-                    const fetchedItems = [];
-                    querySnapshot.forEach((doc) => {
-                        fetchedItems.push({
-                            id: doc.id,
-                            data: doc.data()
-                        });
-                    });
-                    setInvoices(fetchedItems)
-                } catch (error) {
-                    console.error('Error signing in:', error);
-                }
-            };
-            fetchDemoInvoices()
-        }
 
 
-    }, [user])
-
-    // useEffect(() => {
-    //     setFilteredInvoices(invoices)
-    // }, [invoices])
-
+    console.log(user)
     console.log(filteredInvoices)
     return <AppContext.Provider value={value}>
         {children}
