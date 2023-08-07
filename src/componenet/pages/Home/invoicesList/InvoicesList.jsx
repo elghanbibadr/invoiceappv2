@@ -5,12 +5,13 @@ import Invoice from '../../../ui/Invoice'
 import { AppContext } from "../../../../store/AppContext"
 
 const InvoicesList = () => {
-  const { invoices } = useContext(AppContext)
+  const { invoices, filteredInvoices } = useContext(AppContext)
+
+
 
   return (
     <div>
-      {invoices.map(({ id, data }) => (
-
+      {filteredInvoices && filteredInvoices.map(({ id, data }) => (
         <Invoice key={id} data={data} />
       ))}
     </div>

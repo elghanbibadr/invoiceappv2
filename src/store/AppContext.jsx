@@ -9,12 +9,16 @@ export const AppContext = createContext(null);
 export const AppContextProvider = ({ children }) => {
     const [invoices, setInvoices] = useState([])
     const [user, setUser] = useState(undefined)
+    const [filteredInvoices, setFilteredInvoices] = useState(invoices); // New state to store the filtered invoices
+
     console.log(auth.currentUser)
     const value = {
         invoices,
         setInvoices,
         user,
-        setUser
+        setUser,
+        filteredInvoices,
+        setFilteredInvoices
     }
     useEffect(() => {
         // Subscribe to the Firebase Auth state changes
@@ -82,7 +86,11 @@ export const AppContextProvider = ({ children }) => {
 
     }, [user])
 
-    console.log(invoices)
+    // useEffect(() => {
+    //     setFilteredInvoices(invoices)
+    // }, [invoices])
+
+    console.log(filteredInvoices)
     return <AppContext.Provider value={value}>
         {children}
     </AppContext.Provider>;
