@@ -9,7 +9,7 @@ import { AppContext } from '../../../store/AppContext'
 const InvoiceDetailsPage = () => {
   const { invoices } = useContext(AppContext)
   const { id } = useParams();
-  const { data: currentShownInvoiceDetail } = invoices.find(invoice => invoice.data.id === id)
+  const currentShownInvoiceDetail = invoices.find(invoice => invoice.id === id)
 
   return (
     <div>
@@ -17,8 +17,8 @@ const InvoiceDetailsPage = () => {
         <img src={IconLeftArrow} alt="left arrow icon" />
         <p className='font-bold mx-3'>Go Back</p>
       </Link>
-      <EditOrDeleteInvoiceBox />
-      <InvoiceDetailsBox clientName={currentShownInvoiceDetail.clientName} paymentDue={currentShownInvoiceDetail.paymentDue} createdAt={currentShownInvoiceDetail.createdAt} items={currentShownInvoiceDetail.items} />
+      <EditOrDeleteInvoiceBox id={id} />
+      <InvoiceDetailsBox clientName={currentShownInvoiceDetail.data.clientName} paymentDue={currentShownInvoiceDetail.data.paymentDue} createdAt={currentShownInvoiceDetail.data.createdAt} items={currentShownInvoiceDetail.data.items} />
     </div>
   )
 }
