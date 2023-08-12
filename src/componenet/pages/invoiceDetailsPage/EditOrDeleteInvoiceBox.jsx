@@ -33,7 +33,7 @@ const EditOrDeleteInvoiceBox = ({ id }) => {
     return (
         <>
             {modalOpen && <Modal setIsOpen={setIsModalOpen}>
-                <DeleteInvoiceCard />
+                <DeleteInvoiceCard setIsOpen={setIsModalOpen} />
             </Modal>}
             <Card className="mt-5 flex justify-between items-center">
                 <div className={flexStyle}>
