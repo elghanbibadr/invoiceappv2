@@ -12,7 +12,6 @@ export const AppContextProvider = ({ children }) => {
     const [user, setUser] = useState(undefined)
     const [filteredInvoices, setFilteredInvoices] = useState(invoices); // New state to store the filtered invoices
 
-    console.log(auth.currentUser)
     const value = {
         invoices,
         setInvoices,
@@ -60,8 +59,6 @@ export const AppContextProvider = ({ children }) => {
 
 
 
-    console.log(user)
-    console.log(filteredInvoices)
     return <AppContext.Provider value={value}>
         {children}
     </AppContext.Provider>;
