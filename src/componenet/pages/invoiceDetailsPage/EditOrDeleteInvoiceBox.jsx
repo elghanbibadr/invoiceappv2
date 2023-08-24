@@ -4,6 +4,9 @@ import Card from '../../ui/Card'
 import InvoiceStatus from '../../ui/InvoiceStatus'
 import DeleteInvoiceCard from '../../ui/DeleteInvoiceCard';
 import Modal from '../../ui/Modal';
+import { db } from '../../../../public/firebase/FirebaseConfig';
+import { updateDoc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
 import Button from '../../ui/Button'
 
 
@@ -13,11 +16,29 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
     const [modalOpen, setIsModalOpen] = useState(false)
 
 
-    console.log(status)
     const deleteInvoice = async () => {
         setIsModalOpen(true)
 
     };
+    // console.log(id.trim() === "B5lKEnTSROtTLKjURiLn")
+
+
+    const handleMarkAsPaidInvoice = async () => {
+        // console.log(Invoiceid === "qTOu1KFtzp72MxJtatgo")
+        // Invoiceid.trim();
+        const docRef = doc(db, 'invoices', 'qTOu1KFtzp72MxJtatgo');
+
+        try {
+            await updateDoc(docRef, {
+                email: 'pending' // Update the status field inside the data object
+            });
+
+            console.log('Invoice status updated to "paid"');
+        } catch (error) {
+            console.error('Error updating invoice status:', error);
+        }
+    };
+
 
 
     return (
@@ -33,7 +54,7 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
                 <div className={flexStyle}>
                     <Button className="bg-darkBlue mr-3" >Edit</Button>
                     <Button onClick={deleteInvoice} className="bg-paleRed" >Delete</Button>
-                    {status === "pending" && <Button className="bg-paleCyan" >Marke as Paid</Button>}                </div>
+                    {status === "pending" && <Button onClick={handleMarkAsPaidInvoice} className="bg-paleCyan" >Marke as Paid</Button>}                </div>
             </Card>
         </>
     )
