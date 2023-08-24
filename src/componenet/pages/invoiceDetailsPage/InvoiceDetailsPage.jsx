@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import EditOrDeleteInvoiceBox from './EditOrDeleteInvoiceBox'
 import InvoiceDetailsBox from './InvoiceDetailsBox'
 import IconLeftArrow from "../../../../public/assets/icon-arrow-left.svg"
@@ -11,7 +11,6 @@ const InvoiceDetailsPage = () => {
   const { id } = useParams();
   const currentShownInvoiceDetail = invoices.find(invoice => invoice.id === id)
 
-  console.log(currentShownInvoiceDetail)
   return (
     <div>
       <Link to="/home" className='flex cursor-pointer  items-center'>

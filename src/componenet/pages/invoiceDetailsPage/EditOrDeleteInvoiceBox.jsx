@@ -30,7 +30,7 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
 
         try {
             await updateDoc(docRef, {
-                email: 'pending' // Update the status field inside the data object
+                'data.status': 'paid' // Update the status field inside the data object
             });
 
             console.log('Invoice status updated to "paid"');
