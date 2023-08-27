@@ -17,7 +17,6 @@ const DropDown = () => {
     const currentActiveBox = dropDownItems.find(item => item.id === activeBox);
 
 
-    // console.log(currentActiveBox)
 
     const handleOptionSelected = (boxId) => {
         // If the clicked option is already active, reset activeBox to null
@@ -32,7 +31,7 @@ const DropDown = () => {
             return;
         }
 
-        const filteredInvoices = invoices.filter(invoice => invoice.data.status === currentActiveBox.text);
+        const filteredInvoices = invoices.filter(invoice => invoice.status === currentActiveBox.text);
         setFilteredInvoices(filteredInvoices); // Update the filtered state
     }, [activeBox, invoices]);
 

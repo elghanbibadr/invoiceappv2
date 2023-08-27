@@ -16,17 +16,17 @@ const DeleteInvoiceCard = ({ setIsOpen, id, docId }) => {
     const deleteInvoice = async () => {
         console.log("let's delete")
         // Create a reference to the document you want to delete
-        const docRef = doc(db, "invoices", id);
+        const docRef = doc(db, "invoices", docId);
         // Delete the document
         deleteDoc(docRef)
             .then(() => {
-
+                navigate('/home')
                 console.log("Document successfully deleted!");
             })
             .catch((error) => {
                 console.error("Error deleting document: ", error);
-            }).finally(() => navigate('/home')
-            )
+            })
+
     }
 
     return (
