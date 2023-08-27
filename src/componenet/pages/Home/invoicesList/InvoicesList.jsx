@@ -11,8 +11,8 @@ const InvoicesList = () => {
 
   return (
     <div>
-      {filteredInvoices && filteredInvoices.map(({ id, data }) => (
-        <Invoice key={id} data={data} id={id} />
+      {filteredInvoices && filteredInvoices.map(({ id, clientName = { clientName }, createdAt = { createdAt }, total = { total }, status = { status } }) => (
+        <Invoice key={id} id={id} clientName={clientName} createdAt={createdAt} total={total} status={status} />
       ))}
     </div>
   )

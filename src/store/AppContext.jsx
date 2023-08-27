@@ -18,18 +18,6 @@ export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
 
-    // useEffect(() => {
-    //     console.log('hello')
-    //     const collectionRef = collection(db, 'invoices'); // Replace with your collection name
-    //     data.forEach(async item => {
-    //         try {
-    //             const docRef = await addDoc(collectionRef, item);
-    //             console.log('Document added with ID:', docRef.id);
-    //         } catch (error) {
-    //             console.error('Error adding document:', error);
-    //         }
-    //     });
-    // }, [])
 
 
 

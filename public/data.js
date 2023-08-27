@@ -232,4 +232,3 @@ export const data = [
 
 
 
-alert(data.length)
