@@ -6,7 +6,7 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../../../public/firebase/FirebaseConfig';
 import { AppContext } from '../../store/AppContext';
 
-const DeleteInvoiceCard = ({ setIsOpen, id, subId }) => {
+const DeleteInvoiceCard = ({ setIsOpen, id, docId }) => {
 
     const navigate = useNavigate()
     const { invoices } = useContext(AppContext)
@@ -34,7 +34,7 @@ const DeleteInvoiceCard = ({ setIsOpen, id, subId }) => {
             <h1 className=''>
                 Confirm Deletion
             </h1>
-            <p className='text-paleText my-3'>Are you sure you want to delete invoice {subId}? This action cannot be undone.</p>
+            <p className='text-paleText my-3'>Are you sure you want to delete invoice {id}? This action cannot be undone.</p>
             <Button onClick={handleCancel} className="bg-darkBlue">Cancel</Button>
             <Button onClick={deleteInvoice} className="bg-paleRed mx-3">Delete</Button>
         </Card>

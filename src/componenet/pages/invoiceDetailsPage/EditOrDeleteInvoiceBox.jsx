@@ -12,9 +12,9 @@ import Button from '../../ui/Button'
 
 const flexStyle = "flex items-center"
 
-const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
+const EditOrDeleteInvoiceBox = ({ docId, id, status }) => {
     const [modalOpen, setIsModalOpen] = useState(false)
-
+    console.log(docId)
 
     const deleteInvoice = async () => {
         setIsModalOpen(true)
@@ -24,7 +24,7 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
 
     const handleMarkAsPaidInvoice = async () => {
 
-        const docRef = doc(db, 'invoices', 'qTOu1KFtzp72MxJtatgo');
+        const docRef = doc(db, 'invoices', docId);
 
         try {
             await updateDoc(docRef, {
@@ -41,7 +41,7 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
     return (
         <>
             {modalOpen && <Modal setIsOpen={setIsModalOpen}>
-                <DeleteInvoiceCard setIsOpen={setIsModalOpen} subId={subId} id={id} />
+                <DeleteInvoiceCard setIsOpen={setIsModalOpen} docId={docId} id={id} />
             </Modal>}
             <Card className="mt-5 flex justify-between items-center">
                 <div className={flexStyle}>

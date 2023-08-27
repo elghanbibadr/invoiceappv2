@@ -11,13 +11,15 @@ const InvoiceDetailsPage = () => {
   const { id } = useParams();
   const currentShownInvoiceDetail = invoices.find(invoice => invoice.id === id)
 
+
+
   return (
     <div>
       <Link to="/home" className='flex cursor-pointer  items-center'>
         <img src={IconLeftArrow} alt="left arrow icon" />
         <p className='font-bold mx-3'>Go Back</p>
       </Link>
-      <EditOrDeleteInvoiceBox status={currentShownInvoiceDetail?.status} subId={currentShownInvoiceDetail?.id} />
+      <EditOrDeleteInvoiceBox status={currentShownInvoiceDetail?.status} docId={currentShownInvoiceDetail?.docId} id={currentShownInvoiceDetail?.id} />
       <InvoiceDetailsBox id={currentShownInvoiceDetail?.id} clientName={currentShownInvoiceDetail?.clientName} paymentDue={currentShownInvoiceDetail?.paymentDue} createdAt={currentShownInvoiceDetail?.createdAt} items={currentShownInvoiceDetail?.items} />
     </div>
   )
