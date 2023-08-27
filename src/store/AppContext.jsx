@@ -1,5 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../../public/firebase/FirebaseConfig";
+import { data } from "../../public/data";
+import { addDoc, deleteDoc } from "firebase/firestore";
+import { orderBy } from "firebase/firestore";
 import {
     where,
     collection,
@@ -9,10 +12,30 @@ import {
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { db } from "../../public/firebase/FirebaseConfig";
+import { useFetcher } from "react-router-dom";
 
 export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {
+
+    // useEffect(() => {
+    //     console.log('hello')
+    //     const collectionRef = collection(db, 'invoices'); // Replace with your collection name
+    //     data.forEach(async item => {
+    //         try {
+    //             const docRef = await addDoc(collectionRef, item);
+    //             console.log('Document added with ID:', docRef.id);
+    //         } catch (error) {
+    //             console.error('Error adding document:', error);
+    //         }
+    //     });
+    // }, [])
+
+
+
+
+
+
     const [invoices, setInvoices] = useState([]);
     const [user, setUser] = useState(undefined);
     const [filteredInvoices, setFilteredInvoices] = useState(invoices);

@@ -29,7 +29,7 @@ const InvoiceSummaryTable = ({ items }) => {
             </table>
             <div className='bg-[#0c0e16] flex  justify-between items-center p-4 rounded-b-xl'>
                 <p>Grand Total</p>
-                <h1>${totalSum.toFixed(2)}</h1>
+                <h1>${totalSum?.toFixed(2)}</h1>
             </div>
         </>
     )

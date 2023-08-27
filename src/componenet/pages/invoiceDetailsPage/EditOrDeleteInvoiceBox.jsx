@@ -20,12 +20,10 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
         setIsModalOpen(true)
 
     };
-    // console.log(id.trim() === "B5lKEnTSROtTLKjURiLn")
 
 
     const handleMarkAsPaidInvoice = async () => {
-        // console.log(Invoiceid === "qTOu1KFtzp72MxJtatgo")
-        // Invoiceid.trim();
+
         const docRef = doc(db, 'invoices', 'qTOu1KFtzp72MxJtatgo');
 
         try {
@@ -33,7 +31,6 @@ const EditOrDeleteInvoiceBox = ({ id, subId, status }) => {
                 'data.status': 'paid' // Update the status field inside the data object
             });
 
-            console.log('Invoice status updated to "paid"');
         } catch (error) {
             console.error('Error updating invoice status:', error);
         }

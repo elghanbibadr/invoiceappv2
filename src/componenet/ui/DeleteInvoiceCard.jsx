@@ -11,25 +11,22 @@ const DeleteInvoiceCard = ({ setIsOpen, id, subId }) => {
     const navigate = useNavigate()
     const { invoices } = useContext(AppContext)
 
-    console.log(invoices)
     const handleCancel = () => setIsOpen(false)
 
-    console.log(id)
     const deleteInvoice = async () => {
         console.log("let's delete")
         // Create a reference to the document you want to delete
         const docRef = doc(db, "invoices", id);
-        console.log(docRef)
         // Delete the document
         deleteDoc(docRef)
             .then(() => {
 
                 console.log("Document successfully deleted!");
-                navigate('/home')
             })
             .catch((error) => {
                 console.error("Error deleting document: ", error);
-            });
+            }).finally(() => navigate('/home')
+            )
     }
 
     return (
