@@ -28,7 +28,7 @@ const EditOrDeleteInvoiceBox = ({ docId, id, status }) => {
 
         try {
             await updateDoc(docRef, {
-                'data.status': 'paid' // Update the status field inside the data object
+                'status': 'paid' // Update the status field inside the data object
             });
 
         } catch (error) {
