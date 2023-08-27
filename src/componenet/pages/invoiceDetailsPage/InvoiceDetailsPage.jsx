@@ -17,8 +17,8 @@ const InvoiceDetailsPage = () => {
         <img src={IconLeftArrow} alt="left arrow icon" />
         <p className='font-bold mx-3'>Go Back</p>
       </Link>
-      <EditOrDeleteInvoiceBox status={currentShownInvoiceDetail?.data.status} subId={currentShownInvoiceDetail?.data.id} id={id} />
-      <InvoiceDetailsBox subId={currentShownInvoiceDetail?.data.id} clientName={currentShownInvoiceDetail?.data.clientName} paymentDue={currentShownInvoiceDetail?.data.paymentDue} createdAt={currentShownInvoiceDetail?.data.createdAt} items={currentShownInvoiceDetail?.data.items} />
+      <EditOrDeleteInvoiceBox status={currentShownInvoiceDetail?.status} subId={currentShownInvoiceDetail?.id} />
+      <InvoiceDetailsBox id={currentShownInvoiceDetail?.id} clientName={currentShownInvoiceDetail?.clientName} paymentDue={currentShownInvoiceDetail?.paymentDue} createdAt={currentShownInvoiceDetail?.createdAt} items={currentShownInvoiceDetail?.items} />
     </div>
   )
 }

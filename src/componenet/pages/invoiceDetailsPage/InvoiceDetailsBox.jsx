@@ -3,12 +3,12 @@ import Card from '../../ui/Card'
 import InvoiceSummaryTable from './InvoiceSummaryTable'
 import InvoiceTotalBox from './InvoiceTotalBox'
 
-const InvoiceDetailsBox = ({ subId, clientName, paymentDue, createdAt, items }) => {
+const InvoiceDetailsBox = ({ id, clientName, paymentDue, createdAt, items }) => {
 
     return (
         <Card className="mt-10">
             <div className='grid grid-cols-2'>
-                <p className='font-bold mb-16 col-span-2 md:col-span-3'> <strong className='text-accentColor'>#</strong>{subId}</p>
+                <p className='font-bold mb-16 col-span-2 md:col-span-3'> <strong className='text-accentColor'>#</strong>{id}</p>
                 <div>
                     <p className='mb-2'>Invoice Date</p>
                     <h3>{createdAt}</h3>
