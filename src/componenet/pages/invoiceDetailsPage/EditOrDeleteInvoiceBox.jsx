@@ -40,7 +40,7 @@ const EditOrDeleteInvoiceBox = ({ docId, id, status }) => {
 
     return (
         <>
-            {modalOpen && <Modal setIsOpen={setIsModalOpen}>
+            {modalOpen && <Modal style={'flex justify-center items-center'} setIsOpen={setIsModalOpen}>
                 <DeleteInvoiceCard setIsOpen={setIsModalOpen} docId={docId} id={id} />
             </Modal>}
             <Card className="mt-5 flex justify-between items-center">
