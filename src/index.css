@@ -152,3 +152,30 @@ img {
 form {
   /* overflow: scroll; */
 }
+
+
+/* datepicker-custom-styles.css */
+
+/* Custom styles for the date picker container */
+/* .react-datepicker__input-container, */
+.custom-datepicker-container {
+  color: #fff;
+  background-color: #1e2139;
+  border: 1px solid #252945;
+  width: 100%;
+  height: 3rem;
+  padding: 0 1.125rem;
+  border-radius: 0.25rem;
+  outline: none;
+  font-size: .75rem;
+  line-height: .9375rem;
+  letter-spacing: -.25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Custom styles for the selected date */
+.custom-selected-date {
+  background-color: #ffcc00;
+  color: #000;
+}
