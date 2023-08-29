@@ -187,3 +187,18 @@ form {
   background-color: transparent !important;
   color: #7c5dfa !important;
 }
+
+/* 
+#invoiceDate {
+  position: relative;
+}
+
+#invoiceDate::after {
+  content: "";
+  background: url('../public/assets/calendar.svg');
+  display: block;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 20px;
+} */
