@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import IconLeftArrow from "../../../public/assets/icon-arrow-left.svg"
 import { Link } from 'react-router-dom'
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
 
 import Modal from '../ui/Modal'
 
@@ -90,12 +91,10 @@ const NewInvoiceForm = () => {
                         </div>
                     </div>
                     {/* date picker */}
-                    <DatePicker
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        className="custom-datepicker-container"
-                        dateFormat="MM/dd/yyyy"
-                    />
+                    <div>
+                        <h1>My Calendar</h1>
+                        <Calendar onChange={handleDateChange} value={selectedDate} />
+                    </div>
                 </form>
             </div>
         </Modal>
