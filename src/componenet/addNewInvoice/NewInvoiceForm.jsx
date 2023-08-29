@@ -9,15 +9,23 @@ import Modal from '../ui/Modal'
 
 
 const NewInvoiceForm = () => {
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
-        console.log(selectedDate)
+        setIsCalendarOpen(false);
     };
+
+    const handleCalendarToggle = () => {
+        setIsCalendarOpen(!isCalendarOpen);
+    };
+
+    const formatShortWeekday = () => ""; // Empty string
+
     return (
         <Modal>
-            <div className='bg-secondaryColor overflow-y-scroll px-6 pt-20 h-full md:w-1/2 left-10'>
+            <div className='bg-secondaryColor pb-[3rem] overflow-y-scroll px-6 pt-20 h-full md:w-1/2 left-10'>
                 <Link to="/home" className='flex mb-10 cursor-pointer  md:hidden items-center'>
                     <img src={IconLeftArrow} alt="left arrow icon" />
                     <p className='font-bold mx-3'>Go Back</p>
@@ -91,9 +99,29 @@ const NewInvoiceForm = () => {
                         </div>
                     </div>
                     {/* date picker */}
-                    <div>
-                        <h1>My Calendar</h1>
-                        <Calendar onChange={handleDateChange} value={selectedDate} />
+                    <div className="form-inputField ">
+                        <label htmlFor="invoiceDate">
+                            Invoice Date
+
+                        </label>
+                        <input
+                            type="text"
+                            value={selectedDate.toDateString()}
+                            onClick={handleCalendarToggle}
+                            id='invoiceDate'
+                            readOnly
+                        />
+                        {isCalendarOpen && (
+                            <Calendar
+                                onChange={handleDateChange}
+                                value={selectedDate}
+                                className="custom-calendar"
+                                formatShortWeekday={formatShortWeekday}
+                                prev2Label={""} // Empty string to remove one arrow
+                                next2Label={""} // Empty string to remove one arrow   prev2Label={""} // Empty string to remove one arrow
+                                onClickDay={handleDateChange}
+                            />
+                        )}
                     </div>
                 </form>
             </div>
